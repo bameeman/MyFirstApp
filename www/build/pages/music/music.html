@@ -1,0 +1,26 @@
+<ion-navbar *navbar>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>รายการเพลง</ion-title>
+</ion-navbar>
+
+<ion-content padding class="music">
+
+    <ion-searchbar [(ngModel)]="searchQuery"
+    [cancelButtonText]="canceltext"
+    [placeholder]="holdertext"
+    (input)="searchItems($event)">
+    </ion-searchbar>
+
+    <ion-list>
+        <ion-item *ngFor="#item of items" (click)="itemSelected(item)">
+            <ion-thumbnail item-left>
+                <img src="{{ item.artworkUrl100 }}" />
+            </ion-thumbnail>
+            <h2>{{item.trackName}}</h2>
+            <p>{{item.artistName}}</p>
+            <ion-icon name="ios-pricetag-outline"></ion-icon>{{item.trackPrice}}
+        </ion-item>
+    </ion-list>
+</ion-content>
